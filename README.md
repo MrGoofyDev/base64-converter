@@ -29,7 +29,7 @@ A browser-based utility for converting image files into Base64 and turning Base6
 - Image selection, encoding, decoding, preview, and download use browser APIs on the device.
 - The converter does not upload image data to a conversion server.
 - The site uses HTML, CSS, and vanilla JavaScript; it has no required packages, framework, backend, or build process.
-- Reserved advertisement containers are placeholders only. Add your own authorized ad provider code if you choose to enable advertising.
+- The homepage has three responsive 728×90 advertising slots using the configured third-party ad script. Advertising requests are separate from local image conversion.
 
 ## Technology
 
