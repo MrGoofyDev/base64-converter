@@ -68,7 +68,8 @@ h1, h2, h3, p { margin-top: 0; }
 .ad-slot .ad-frame { display: flex; flex: 0 0 auto; align-items: flex-start; justify-content: center; max-width: 100%; }
 .ad-slot iframe { display: block; width: 728px; max-width: none; height: 90px; flex: 0 0 auto; border: 0; transform: scale(var(--ad-scale, 1)); transform-origin: top center; }
 .ad-slot div { max-width: 100%; }
-.ad-inline { margin-top: 48px; margin-bottom: 60px; }
+.ad-inline { margin-top: 48px; margin-bottom: 24px; }
+.ad-inline + .info-section { padding-top: 24px; }
 .ad-label { font-size: 13px; font-weight: 600; letter-spacing: .02em; }
 .tool-section { padding-top: 42px; }
 .tool-card { min-width: 0; max-width: 860px; margin: auto; border: 1px solid #e0e5eb; border-radius: 12px; background: var(--surface); box-shadow: 0 4px 14px rgb(21 36 58 / 3%); }
@@ -230,7 +231,7 @@ h1, h2, h3, p { margin-top: 0; }
   .file-summary, .file-name { font-size: 14px; }
   .info-card p { font-size: 14px; }
   .how-to li { font-size: 14px; }
-  .ad-inline { margin-top: 38px; margin-bottom: 50px; }
+  .ad-inline { margin-top: 38px; margin-bottom: 18px; }
   .ad-wide { width: min(752px, calc(100% - 24px)); min-height: calc(13vw + 38px); }
   .ad-slot { padding-inline: 8px; }
   .ad-slot iframe { width: 728px; max-width: none; }
