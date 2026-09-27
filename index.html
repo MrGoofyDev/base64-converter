@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fa">
+  <meta name="description" content="Free online Image to Base64 and Base64 to Image converter. Convert images to Base64, copy Data URI, HTML or CSS code, preview Base64 images, and download images directly in your browser.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Image to Base64 – Free Image to Base64 &amp; Base64 to Image Converter">
+  <meta property="og:description" content="Convert images to Base64 or turn Base64 image data into a downloadable image, right in your browser.">
+  <meta property="og:url" content="/">
+  <meta property="og:site_name" content="Image to Base64">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Image to Base64 – Free Image to Base64 &amp; Base64 to Image Converter">
+  <meta name="twitter:description" content="Convert images to Base64 or turn Base64 image data into a downloadable image, right in your browser.">
+  <title>Image to Base64 – Free Image to Base64 &amp; Base64 to Image Converter</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image to Base64",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "description": "A browser-based tool to convert images to Base64 and Base64 image data back into downloadable images.",
+      "browserRequirements": "Requires a modern web browser."
+    }
+  </script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="Image to Base64 home">
+        <img src="/assets/logo.svg" width="36" height="36" alt="">
+        <span>Image <span class="brand-muted">to</span> Base64</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-current" href="/" aria-current="page">Home</a>
+        <a href="/about">About</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero content-width">
+      <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> A simple tool for developers</p>
+      <h1>Image to Base64 &amp; Base64 to Image Converter</h1>
+      <p class="hero-copy">Convert images to Base64 or convert Base64 image data back into downloadable images directly in your browser.</p>
+    </section>
+
+    <div class="ad-slot ad-wide" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <!-- Adsterra 728x90 code goes here -->
+    </div>
+
+    <section class="tool-section content-width" aria-label="Image converter">
+      <div class="tool-card">
+        <div class="mode-switch" role="tablist" aria-label="Conversion mode">
+          <button class="mode-tab active" id="tab-to-base64" type="button" role="tab" aria-selected="true" aria-controls="panel-to-base64" data-mode="encode">Image to Base64</button>
+          <button class="mode-tab" id="tab-to-image" type="button" role="tab" aria-selected="false" aria-controls="panel-to-image" data-mode="decode" tabindex="-1">Base64 to Image</button>
+        </div>
+
+        <section class="tool-panel" id="panel-to-base64" role="tabpanel" aria-labelledby="tab-to-base64">
+          <div class="panel-heading">
+            <div>
+              <h2>Convert an image to Base64</h2>
+              <p>Choose an image or drop it below. Nothing leaves your device.</p>
+            </div>
+            <span class="step-mark" aria-hidden="true">01</span>
+          </div>
+
+          <input class="visually-hidden" id="image-file" type="file" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml,image/bmp,image/x-icon,image/vnd.microsoft.icon,image/avif,.ico">
+          <div class="drop-zone" id="drop-zone" role="button" tabindex="0" aria-label="Choose an image or drag and drop an image here">
+            <span class="upload-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="25" height="25" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 15.5v3A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="drop-title">Drop an image here, or <span class="text-link">browse files</span></span>
+            <span class="drop-hint">PNG, JPG, GIF, WebP, SVG, BMP, ICO or AVIF · up to 20 MB</span>
+          </div>
+
+          <div class="error-message" id="file-error" role="alert" hidden></div>
+          <div class="image-details" id="image-details" hidden>
+            <div class="preview-frame">
+              <img id="image-preview" alt="Preview of the selected image">
+            </div>
+            <div class="file-summary">
+              <strong class="file-name" id="file-name"></strong>
+              <span id="file-meta"></span>
+              <div class="file-actions">
+                <button class="button button-secondary button-small" id="replace-file" type="button">Replace</button>
+                <button class="button button-quiet button-small" id="remove-file" type="button">Remove</button>
+              </div>
+            </div>
+          </div>
+          <div class="field-row">
+            <label class="field-label" for="output-value">Output format</label>
+            <span class="field-note">Choose the format that fits your project</span>
+          </div>
+          <div class="output-tabs" role="tablist" aria-label="Base64 output format">
+            <button id="output-tab-data-uri" type="button" role="tab" class="output-tab selected" aria-selected="true" aria-controls="output-value" data-output="data-uri">Data URI</button>
+            <button id="output-tab-raw" type="button" role="tab" class="output-tab" aria-selected="false" aria-controls="output-value" data-output="raw">Raw Base64</button>
+            <button id="output-tab-html" type="button" role="tab" class="output-tab" aria-selected="false" aria-controls="output-value" data-output="html">HTML</button>
+            <button id="output-tab-css" type="button" role="tab" class="output-tab" aria-selected="false" aria-controls="output-value" data-output="css">CSS</button>
+          </div>
+          <label class="visually-hidden" for="output-value">Converted image output</label>
+          <textarea id="output-value" class="code-output" role="tabpanel" aria-labelledby="output-tab-data-uri" rows="5" readonly placeholder="Your converted image code will appear here…" spellcheck="false"></textarea>
+          <div class="output-footer">
+            <span class="output-hint" id="output-hint">Data URI includes the image type and Base64 data.</span>
+            <div class="output-actions">
+              <button class="button button-secondary" id="convert-to-base64" type="button" disabled>Convert to Base64</button>
+              <button class="button button-primary" id="copy-output" type="button" disabled>
+                <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16" fill="none"><rect x="7" y="7" width="9" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 7V4.5A1.5 1.5 0 0 0 11.5 3h-7A1.5 1.5 0 0 0 3 4.5v8A1.5 1.5 0 0 0 4.5 14H7" stroke="currentColor" stroke-width="1.5"/></svg>
+                <span id="copy-label">Copy Data URI</span>
+              </button>
+            </div>
+          </div>
+          <p class="status-message" id="encode-status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="tool-panel" id="panel-to-image" role="tabpanel" aria-labelledby="tab-to-image" hidden>
+          <div class="panel-heading">
+            <div>
+              <h2>Convert Base64 to an image</h2>
+              <p>Paste a Data URI or raw Base64 string to preview and download it.</p>
+            </div>
+            <span class="step-mark" aria-hidden="true">02</span>
+          </div>
+          <label class="field-label" for="base64-input">Base64 image data</label>
+          <textarea class="code-input" id="base64-input" aria-describedby="decode-error" rows="7" placeholder="Paste data:image/png;base64,… or raw Base64 here" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+          <div class="decode-options">
+            <div>
+              <label class="field-label" for="image-type">Image type for raw Base64</label>
+              <span class="field-note">Used only when the data has no MIME type</span>
+            </div>
+            <select id="image-type" class="type-select">
+              <option value="image/png">PNG</option>
+              <option value="image/jpeg">JPEG</option>
+              <option value="image/gif">GIF</option>
+              <option value="image/webp">WebP</option>
+              <option value="image/svg+xml">SVG</option>
+              <option value="image/bmp">BMP</option>
+              <option value="image/x-icon">ICO</option>
+              <option value="image/avif">AVIF</option>
+            </select>
+          </div>
+          <div class="error-message" id="decode-error" role="alert" hidden></div>
+          <div class="decoded-result" id="decoded-result" hidden>
+            <div class="decoded-image-wrap"><img id="decoded-preview" alt="Preview of the decoded Base64 image"></div>
+            <div class="decoded-info">
+              <div><span class="detail-label">Detected type</span><strong id="decoded-type"></strong></div>
+              <div><span class="detail-label">Image size</span><strong id="decoded-dimensions"></strong></div>
+              <a class="button button-primary" id="download-image" download="converted-image.png" href="#">Download Image</a>
+            </div>
+          </div>
+          <div class="decode-footer">
+            <p class="privacy-note"><svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" fill="none"><path d="M10 2.5 4 5v4.7c0 3.6 2.5 6.4 6 7.8 3.5-1.4 6-4.2 6-7.8V5l-6-2.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="m7.5 10 1.7 1.7 3.5-3.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Your data is processed locally in your browser.</p>
+            <div class="decode-actions">
+              <button class="button button-secondary" id="convert-to-image" type="button">Convert to Image</button>
+              <button class="button button-quiet" id="clear-base64" type="button">Clear</button>
+            </div>
+          </div>
+          <p class="status-message" id="decode-status" role="status" aria-live="polite"></p>
+        </section>
+      </div>
+      <p class="privacy-banner"><span class="privacy-lock" aria-hidden="true"><svg viewBox="0 0 20 20" width="12" height="12" fill="none"><rect x="4.5" y="8.5" width="11" height="8" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M7 8.5V6a3 3 0 0 1 6 0v2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span> Your images are processed locally in your browser and are not uploaded to our server.</p>
+    </section>
+
+    <section class="ad-slot ad-wide ad-inline" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <!-- Adsterra responsive/horizontal ad code goes here -->
+    </section>
+
+    <section class="info-section content-width">
+      <div class="section-intro">
+        <p class="eyebrow">The essentials</p>
+        <h2>Image data, ready to use</h2>
+        <p>Move image data between a file and the formats commonly used in web development.</p>
+      </div>
+      <div class="info-grid">
+        <article class="info-card">
+          <span class="card-index">01 / ENCODE</span>
+          <h3>What is Base64?</h3>
+          <p>Base64 is a way to represent binary data as text using a set of 64 characters. It lets image data travel in text-based formats such as HTML, CSS, and JSON.</p>
+        </article>
+        <article class="info-card">
+          <span class="card-index">02 / CONVERT</span>
+          <h3>How does conversion work?</h3>
+          <p>Your browser reads the selected image and encodes its bytes as Base64. For decoding, the tool turns valid Base64 data back into image bytes and previews them.</p>
+        </article>
+        <article class="info-card">
+          <span class="card-index">03 / USE</span>
+          <h3>When should I use a Base64 image?</h3>
+          <p>Embedding a small image can reduce separate requests, but it increases text size and can’t be cached independently. For larger images, a regular image file is often more efficient.</p>
+        </article>
+      </div>
+      <div class="how-to">
+        <div>
+          <p class="eyebrow">Quick guide</p>
+          <h2>From image to usable code</h2>
+        </div>
+        <ol>
+          <li><span>1</span>Choose an image, drop it in, or paste an image from your clipboard.</li>
+          <li><span>2</span>Select Data URI, raw Base64, HTML, or CSS output.</li>
+          <li><span>3</span>Copy the result, or switch modes to preview and download Base64 data.</li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="ad-slot ad-wide ad-bottom" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <!-- Adsterra 728x90 code goes here -->
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner content-width">
+      <div class="footer-brand-block">
+        <a class="brand footer-brand" href="/">
+          <img src="/assets/logo.svg" width="34" height="34" alt="">
+          <span>Image <span class="brand-muted">to</span> Base64</span>
+        </a>
+        <p>A focused, private image conversion tool for the web.</p>
+      </div>
+      <div class="footer-links">
+        <div><span class="footer-heading">Explore</span><a href="/">Home</a><a href="/about">About</a></div>
+        <div><span class="footer-heading">Information</span><a href="/privacy">Privacy</a><a href="/contact">Contact</a></div>
+        <div><span class="footer-heading">Get in touch</span><a href="mailto:mrgoofy@tutamail.com">mrgoofy@tutamail.com</a></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Image to Base64. All rights reserved.</span><span>Made for simple, local conversion.</span></div>
+    </div>
+  </footer>
+</body>
+</html>

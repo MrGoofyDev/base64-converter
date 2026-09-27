@@ -1,0 +1,21 @@
+{
+  "name": "Image to Base64",
+  "short_name": "Image to Base64",
+  "description": "Convert images to Base64 or Base64 image data to downloadable images in your browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f8fa",
+  "theme_color": "#f7f8fa",
+  "icons": [
+    {
+      "src": "/assets/android-chrome-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/android-chrome-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
