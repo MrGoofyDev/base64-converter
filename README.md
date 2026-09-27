@@ -4,6 +4,10 @@ A browser-based utility for converting image files into Base64 and turning Base6
 
 **Repository:** [github.com/MrGoofyDev/base64-converter](https://github.com/MrGoofyDev/base64-converter)
 
+## Live Website
+
+[https://base64img.pages.dev/](https://base64img.pages.dev/)
+
 ## Features
 
 ### Image to Base64
@@ -84,7 +88,7 @@ This repository can be deployed as a static site without a build command:
 2. Select **None** (or the static/no-framework option) for the framework preset.
 3. Leave the build command empty and set the build output directory to `.` (the repository root).
 4. Deploy. Cloudflare Pages reads `_redirects` and `_headers` from the published root.
-5. Before production, replace `YOUR-DOMAIN.example` in `robots.txt` and `sitemap.xml` with the site's real hostname. The canonical and Open Graph URLs are root-relative and do not assume a domain.
+5. The canonical, Open Graph, Twitter/X, structured-data, `robots.txt`, and sitemap URLs are configured for [https://base64img.pages.dev/](https://base64img.pages.dev/). Update them together only if the production domain changes.
 
 You can also publish the static project root with a compatible direct-upload workflow; no server-side runtime is needed.
 
