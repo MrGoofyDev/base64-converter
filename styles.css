@@ -182,6 +182,7 @@ h1, h2, h3, p { margin-top: 0; }
 .document-copy a:not(.inline-cta) { color: var(--accent); text-underline-offset: 3px; }
 .inline-cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 1px; color: var(--accent); font-size: 12px; font-weight: 650; text-decoration: none; }
 .inline-cta:hover { color: var(--accent-dark); }
+.document-copy .source-link { margin-left: 12px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 6px; background: white; }
 .contact-main { min-height: 570px; }
 .contact-card { max-width: 560px; display: flex; gap: 17px; margin-top: 34px; padding: 23px; border: 1px solid var(--line); border-radius: 9px; background: white; }
 .contact-icon { width: 46px; height: 46px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 9px; background: var(--accent-soft); color: var(--accent); }
@@ -249,6 +250,7 @@ h1, h2, h3, p { margin-top: 0; }
   .footer-links > div:last-child { flex-basis: 100%; }
   .footer-bottom { flex-direction: column; gap: 3px; }
   .contact-card { padding: 17px; }
+  .document-copy .source-link { display: flex; width: fit-content; margin: 12px 0 0; }
   .output-footer { align-items: stretch; flex-direction: column; gap: 8px; }
   .output-hint { max-width: none; }
   .output-actions { width: 100%; }
@@ -329,6 +331,7 @@ h1, h2, h3, p { margin-top: 0; }
   .document-copy h2 { font-size: 22px; }
   .document-copy p { font-size: 15px; }
   .inline-cta { font-size: 15px; }
+  .document-copy .source-link { padding: 9px 12px; }
   .contact-card h2 { font-size: 18px; }
   .contact-card p, .contact-note { font-size: 14px; }
   .email-link { font-size: 16px; }
