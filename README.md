@@ -10,7 +10,7 @@ A browser-based utility for converting image files into Base64 and turning Base6
 
 ## Features
 
-The Base64-to-Image converter is the default landing view; switch tabs at any time to open Image to Base64.
+The Image-to-Base64 converter appears first; switch tabs at any time to open Base64 to Image.
 
 ### Image to Base64
 
@@ -31,7 +31,7 @@ The Base64-to-Image converter is the default landing view; switch tabs at any ti
 - Image selection, encoding, decoding, preview, and download use browser APIs on the device.
 - The converter does not upload image data to a conversion server.
 - The site uses HTML, CSS, and vanilla JavaScript; it has no required packages, framework, backend, or build process.
-- The homepage has three responsive 728×90 advertising slots using the configured third-party ad script. Advertising requests are separate from local image conversion.
+- The homepage has three responsive 728×90 advertising slots using the configured third-party ad script. Banner frames scale proportionally to fit narrow screens. Advertising requests are separate from local image conversion.
 
 ## Technology
 

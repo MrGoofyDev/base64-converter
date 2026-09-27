@@ -65,56 +65,11 @@
     <section class="tool-section content-width" aria-label="Image converter">
       <div class="tool-card">
         <div class="mode-switch" role="tablist" aria-label="Conversion mode">
-          <button class="mode-tab active" id="tab-to-image" type="button" role="tab" aria-selected="true" aria-controls="panel-to-image" data-mode="decode">Base64 to Image</button>
-          <button class="mode-tab" id="tab-to-base64" type="button" role="tab" aria-selected="false" aria-controls="panel-to-base64" data-mode="encode" tabindex="-1">Image to Base64</button>
+          <button class="mode-tab active" id="tab-to-base64" type="button" role="tab" aria-selected="true" aria-controls="panel-to-base64" data-mode="encode">Image to Base64</button>
+          <button class="mode-tab" id="tab-to-image" type="button" role="tab" aria-selected="false" aria-controls="panel-to-image" data-mode="decode" tabindex="-1">Base64 to Image</button>
         </div>
 
-        <section class="tool-panel" id="panel-to-image" role="tabpanel" aria-labelledby="tab-to-image">
-          <div class="panel-heading">
-            <div>
-              <h2>Convert Base64 to an Image</h2>
-              <p>Paste a Data URI or raw Base64 string to preview and download it.</p>
-            </div>
-            <span class="step-mark" aria-hidden="true">01</span>
-          </div>
-          <label class="field-label" for="base64-input">Base64 image data</label>
-          <textarea class="code-input" id="base64-input" aria-describedby="decode-error" rows="7" placeholder="Paste data:image/png;base64,… or raw Base64 here" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
-          <div class="decode-options">
-            <div>
-              <label class="field-label" for="image-type">Image type for raw Base64</label>
-              <span class="field-note">Used only when the data has no MIME type</span>
-            </div>
-            <select id="image-type" class="type-select">
-              <option value="image/png">PNG</option>
-              <option value="image/jpeg">JPEG</option>
-              <option value="image/gif">GIF</option>
-              <option value="image/webp">WebP</option>
-              <option value="image/svg+xml">SVG</option>
-              <option value="image/bmp">BMP</option>
-              <option value="image/x-icon">ICO</option>
-              <option value="image/avif">AVIF</option>
-            </select>
-          </div>
-          <div class="error-message" id="decode-error" role="alert" hidden></div>
-          <div class="decoded-result" id="decoded-result" hidden>
-            <div class="decoded-image-wrap"><img id="decoded-preview" alt="Preview of the decoded Base64 image"></div>
-            <div class="decoded-info">
-              <div><span class="detail-label">Detected type</span><strong id="decoded-type"></strong></div>
-              <div><span class="detail-label">Image size</span><strong id="decoded-dimensions"></strong></div>
-              <a class="button button-primary" id="download-image" download="converted-image.png">Download Image</a>
-            </div>
-          </div>
-          <div class="decode-footer">
-            <p class="privacy-note"><svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" fill="none"><path d="M10 2.5 4 5v4.7c0 3.6 2.5 6.4 6 7.8 3.5-1.4 6-4.2 6-7.8V5l-6-2.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="m7.5 10 1.7 1.7 3.5-3.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Your data is processed locally in your browser.</p>
-            <div class="decode-actions">
-              <button class="button button-secondary" id="convert-to-image" type="button">Convert to Image</button>
-              <button class="button button-quiet" id="clear-base64" type="button">Clear</button>
-            </div>
-          </div>
-          <p class="status-message" id="decode-status" role="status" aria-live="polite"></p>
-        </section>
-
-        <section class="tool-panel" id="panel-to-base64" role="tabpanel" aria-labelledby="tab-to-base64" hidden>
+        <section class="tool-panel" id="panel-to-base64" role="tabpanel" aria-labelledby="tab-to-base64">
           <div class="panel-heading">
             <div>
               <h2>Convert an image to Base64</h2>
@@ -174,6 +129,51 @@
           <p class="status-message" id="encode-status" role="status" aria-live="polite"></p>
         </section>
 
+        <section class="tool-panel" id="panel-to-image" role="tabpanel" aria-labelledby="tab-to-image" hidden>
+          <div class="panel-heading">
+            <div>
+              <h2>Convert Base64 to an Image</h2>
+              <p>Paste a Data URI or raw Base64 string to preview and download it.</p>
+            </div>
+            <span class="step-mark" aria-hidden="true">02</span>
+          </div>
+          <label class="field-label" for="base64-input">Base64 image data</label>
+          <textarea class="code-input" id="base64-input" aria-describedby="decode-error" rows="7" placeholder="Paste data:image/png;base64,… or raw Base64 here" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+          <div class="decode-options">
+            <div>
+              <label class="field-label" for="image-type">Image type for raw Base64</label>
+              <span class="field-note">Used only when the data has no MIME type</span>
+            </div>
+            <select id="image-type" class="type-select">
+              <option value="image/png">PNG</option>
+              <option value="image/jpeg">JPEG</option>
+              <option value="image/gif">GIF</option>
+              <option value="image/webp">WebP</option>
+              <option value="image/svg+xml">SVG</option>
+              <option value="image/bmp">BMP</option>
+              <option value="image/x-icon">ICO</option>
+              <option value="image/avif">AVIF</option>
+            </select>
+          </div>
+          <div class="error-message" id="decode-error" role="alert" hidden></div>
+          <div class="decoded-result" id="decoded-result" hidden>
+            <div class="decoded-image-wrap"><img id="decoded-preview" alt="Preview of the decoded Base64 image"></div>
+            <div class="decoded-info">
+              <div><span class="detail-label">Detected type</span><strong id="decoded-type"></strong></div>
+              <div><span class="detail-label">Image size</span><strong id="decoded-dimensions"></strong></div>
+              <a class="button button-primary" id="download-image" download="converted-image.png">Download Image</a>
+            </div>
+          </div>
+          <div class="decode-footer">
+            <p class="privacy-note"><svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" fill="none"><path d="M10 2.5 4 5v4.7c0 3.6 2.5 6.4 6 7.8 3.5-1.4 6-4.2 6-7.8V5l-6-2.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="m7.5 10 1.7 1.7 3.5-3.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Your data is processed locally in your browser.</p>
+            <div class="decode-actions">
+              <button class="button button-secondary" id="convert-to-image" type="button">Convert to Image</button>
+              <button class="button button-quiet" id="clear-base64" type="button">Clear</button>
+            </div>
+          </div>
+          <p class="status-message" id="decode-status" role="status" aria-live="polite"></p>
+        </section>
+
       </div>
       <p class="privacy-banner"><span class="privacy-lock" aria-hidden="true"><svg viewBox="0 0 20 20" width="12" height="12" fill="none"><rect x="4.5" y="8.5" width="11" height="8" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M7 8.5V6a3 3 0 0 1 6 0v2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span> Your images are processed locally in your browser and are not uploaded to our server.</p>
     </section>
@@ -191,6 +191,20 @@
       </script>
       <script src="https://www.highrevenueformat.com/3d10bf9bac3b6d015572d80c28f205bf/invoke.js"></script>
     </section>
+
+    <div class="ad-slot ad-wide" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <script>
+        atOptions = {
+          'key' : '3d10bf9bac3b6d015572d80c28f205bf',
+          'format' : 'iframe',
+          'height' : 90,
+          'width' : 728,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highrevenueformat.com/3d10bf9bac3b6d015572d80c28f205bf/invoke.js"></script>
+    </div>
 
     <section class="info-section content-width">
       <div class="section-intro">
@@ -227,20 +241,6 @@
         </ol>
       </div>
     </section>
-
-    <div class="ad-slot ad-wide" aria-label="Advertisement">
-      <span class="ad-label">Advertisement</span>
-      <script>
-        atOptions = {
-          'key' : '3d10bf9bac3b6d015572d80c28f205bf',
-          'format' : 'iframe',
-          'height' : 90,
-          'width' : 728,
-          'params' : {}
-        };
-      </script>
-      <script src="https://www.highrevenueformat.com/3d10bf9bac3b6d015572d80c28f205bf/invoke.js"></script>
-    </div>
 
     <div class="ad-slot ad-wide ad-bottom" aria-label="Advertisement">
       <span class="ad-label">Advertisement</span>
