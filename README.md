@@ -10,6 +10,8 @@ A browser-based utility for converting image files into Base64 and turning Base6
 
 ## Features
 
+The Base64-to-Image converter is the default landing view; switch tabs at any time to open Image to Base64.
+
 ### Image to Base64
 
 - Select an image, drag and drop it, or paste an image from the clipboard where supported.
