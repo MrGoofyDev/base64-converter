@@ -4,3 +4,9 @@
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+/ai-catalog.json
+  Content-Type: application/json
+
+/.well-known/ai-catalog.json
+  Content-Type: application/json

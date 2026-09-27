@@ -1,0 +1,27 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Image to Base64",
+    "identifier": "base64img.pages.dev",
+    "documentationUrl": "https://base64img.pages.dev/llms.txt",
+    "logoUrl": "https://base64img.pages.dev/assets/logo.svg"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:base64img.pages.dev:web:image-to-base64",
+      "displayName": "Image to Base64 converter",
+      "type": "text/html",
+      "description": "A browser-based tool that converts selected image files into a Data URI, raw Base64, HTML image markup, or CSS background-image value.",
+      "url": "https://base64img.pages.dev/#panel-to-base64",
+      "tags": ["image", "base64", "encoding", "browser"]
+    },
+    {
+      "identifier": "urn:air:base64img.pages.dev:web:base64-to-image",
+      "displayName": "Base64 to Image converter",
+      "type": "text/html",
+      "description": "A browser-based tool that previews supported Base64 image data and lets the user download the decoded image.",
+      "url": "https://base64img.pages.dev/#panel-to-image",
+      "tags": ["image", "base64", "decoding", "browser"]
+    }
+  ]
+}

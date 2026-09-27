@@ -93,6 +93,14 @@
     });
   }
 
+  function syncModeWithHash() {
+    if (window.location.hash === "#panel-to-image") switchMode("decode");
+    else if (window.location.hash === "#panel-to-base64") switchMode("encode");
+  }
+
+  syncModeWithHash();
+  window.addEventListener("hashchange", syncModeWithHash);
+
   function setOutput(value) {
     if (!currentDataUri) {
       outputValue.value = "";
@@ -108,7 +116,7 @@
     else outputValue.value = currentDataUri;
     copyLabel.textContent = outputLabels[value];
     document.querySelector("#output-hint").textContent = outputHints[value];
-    outputValue.setAttribute("aria-labelledby", `output-tab-${value}`);
+    document.querySelector("#output-panel").setAttribute("aria-labelledby", `output-tab-${value}`);
     copyButton.disabled = false;
   }
 
@@ -373,7 +381,7 @@
   outputTabs.forEach((tab) => {
     tab.addEventListener("click", () => {
       currentOutput = tab.dataset.output;
-      outputValue.setAttribute("aria-labelledby", tab.id);
+      document.querySelector("#output-panel").setAttribute("aria-labelledby", tab.id);
       outputTabs.forEach((item) => {
         const selected = item === tab;
         item.classList.toggle("selected", selected);

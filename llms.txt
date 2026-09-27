@@ -1,0 +1,23 @@
+# Image to Base64
+
+Image to Base64 is a free browser-based utility for converting image files to Base64 and Base64 image data back into downloadable image files. Conversion happens locally in the browser; image data is not uploaded to a conversion server.
+
+## Main tool
+
+- [Image to Base64 converter](https://base64img.pages.dev/#panel-to-base64): Select, drop, or paste an image and copy a Data URI, raw Base64, HTML `<img>` markup, or CSS background-image value. Supports PNG, JPEG, GIF, WebP, SVG, BMP, ICO, and AVIF files up to 20 MB.
+- [Base64 to Image converter](https://base64img.pages.dev/#panel-to-image): Paste a Base64 Data URI or raw Base64, preview supported image data, and download the decoded image.
+
+## Website pages
+
+- [Home](https://base64img.pages.dev/)
+- [About](https://base64img.pages.dev/about)
+- [Privacy policy](https://base64img.pages.dev/privacy)
+- [Contact](https://base64img.pages.dev/contact)
+
+## Project and discovery
+
+- [Live website](https://base64img.pages.dev/)
+- [Source code on GitHub](https://github.com/MrGoofyDev/base64-converter)
+- [AI Catalog](https://base64img.pages.dev/ai-catalog.json)
+- [AI Catalog well-known endpoint](https://base64img.pages.dev/.well-known/ai-catalog.json)
+- [Sitemap](https://base64img.pages.dev/sitemap.xml)

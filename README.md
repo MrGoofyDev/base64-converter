@@ -37,7 +37,7 @@ A browser-based utility for converting image files into Base64 and turning Base6
 - CSS3 responsive layout
 - Vanilla JavaScript and browser APIs, including `FileReader`, `Blob`, object URLs, and the Clipboard API where available
 - SVG branding and icons
-- Cloudflare Pages-compatible static routing and headers
+- Cloudflare Pages-compatible clean URLs and static headers
 
 ## Project structure
 
@@ -57,8 +57,11 @@ A browser-based utility for converting image files into Base64 and turning Base6
 │   ├── apple-touch-icon.png
 │   ├── android-chrome-192.png
 │   └── android-chrome-512.png
-├── _redirects              # Extensionless page routes
-├── _headers                # Static security-related response headers
+├── _headers                # Static security-related and JSON response headers
+├── llms.txt                # Agent-readable site and feature overview
+├── ai-catalog.json         # AI Catalog resource discovery document
+├── .well-known/
+│   └── ai-catalog.json     # Standard well-known AI Catalog endpoint
 ├── site.webmanifest
 ├── robots.txt
 ├── sitemap.xml
@@ -74,7 +77,7 @@ No dependencies or compilation are required. Serve the project root with any sta
 python3 -m http.server 8000
 ```
 
-Open `http://localhost:8000`. The `_redirects` file is interpreted by Cloudflare Pages; a simple local static server may not provide the extensionless `/about`, `/privacy`, and `/contact` routes unless it is configured to do so.
+Open `http://localhost:8000`. Cloudflare Pages serves `about.html`, `privacy.html`, and `contact.html` at their extensionless clean URLs automatically. A simple local static server may require `/about.html`, `/privacy.html`, and `/contact.html` instead.
 
 ## Browser compatibility
 
@@ -87,7 +90,7 @@ This repository can be deployed as a static site without a build command:
 1. Create a Cloudflare Pages project and connect `MrGoofyDev/base64-converter`, using the `main` branch.
 2. Select **None** (or the static/no-framework option) for the framework preset.
 3. Leave the build command empty and set the build output directory to `.` (the repository root).
-4. Deploy. Cloudflare Pages reads `_redirects` and `_headers` from the published root.
+4. Deploy. Cloudflare Pages serves the extensionless page routes from the corresponding `.html` files and reads `_headers` from the published root.
 5. The canonical, Open Graph, Twitter/X, structured-data, `robots.txt`, and sitemap URLs are configured for [https://base64img.pages.dev/](https://base64img.pages.dev/). Update them together only if the production domain changes.
 
 You can also publish the static project root with a compatible direct-upload workflow; no server-side runtime is needed.
