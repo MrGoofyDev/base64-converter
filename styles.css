@@ -62,17 +62,16 @@ h1, h2, h3, p { margin-top: 0; }
 
 .ad-slot {
   display: flex; align-items: center; justify-content: center;
-  width: fit-content; max-width: 100%; height: auto; margin-inline: auto;
+  flex: 0 0 auto; max-width: 100%; margin-inline: auto;
 }
-.ad-placeholder { display: flex; align-items: center; justify-content: center; max-width: 100%; border: 1px dashed #c8d0da; background: #f8f9fb; color: #667487; font-size: 13px; font-weight: 600; letter-spacing: .02em; text-align: center; }
-.ad-placeholder-desktop { width: 728px; height: 90px; }
-.ad-placeholder-mobile { display: none; }
+.ad-slot iframe { display: block; flex: 0 0 auto; max-width: none; border: 0; }
+.ad-wide-slot { width: 728px; height: 90px; }
+.ad-medium-slot { width: 468px; height: 60px; }
+.ad-mobile-slot { width: 320px; height: 50px; }
 .ad-inline { margin-top: 20px; }
 .ad-inline + .info-section { padding-top: 24px; }
 .ad-compact-slot { margin-bottom: 12px; }
-.ad-compact-slot .ad-placeholder { width: 320px; height: 50px; }
 .ad-banner-slot { margin-top: 18px; }
-.ad-placeholder-banner { width: 468px; height: 60px; }
 .ad-banner-slot + .how-to { margin-top: 24px; }
 .tool-section { padding-top: 42px; }
 .tool-card { min-width: 0; max-width: 860px; margin: auto; border: 1px solid #e0e5eb; border-radius: 12px; background: var(--surface); box-shadow: 0 4px 14px rgb(21 36 58 / 3%); }
@@ -202,10 +201,7 @@ h1, h2, h3, p { margin-top: 0; }
 .contact-note { margin: 14px 0 0; color: #667487; font-size: 11px; }
 
 @media (max-width: 783px) {
-  .ad-slot { position: relative; left: 50%; width: min(320px, 100vw); max-width: none; margin-inline: 0; transform: translateX(-50%); }
-  .ad-placeholder-desktop { display: none; }
-  .ad-placeholder-banner { display: none; }
-  .ad-placeholder-mobile { display: flex; width: 100%; height: 50px; }
+  .ad-wide-slot, .ad-medium-slot, .ad-mobile-slot { width: min(320px, 100vw); height: 50px; }
 }
 
 @media (max-width: 700px) {
