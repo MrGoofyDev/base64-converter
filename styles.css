@@ -74,8 +74,6 @@ h1, h2, h3, p { margin-top: 0; }
 .ad-banner-slot { margin-top: 18px; }
 .ad-placeholder-banner { width: 468px; height: 60px; }
 .ad-banner-slot + .how-to { margin-top: 24px; }
-.ad-square-slot { margin-top: 18px; margin-bottom: 20px; }
-.ad-placeholder-square { width: 300px; height: 250px; }
 .tool-section { padding-top: 42px; }
 .tool-card { min-width: 0; max-width: 860px; margin: auto; border: 1px solid #e0e5eb; border-radius: 12px; background: var(--surface); box-shadow: 0 4px 14px rgb(21 36 58 / 3%); }
 .mode-switch { display: grid; grid-template-columns: 1fr 1fr; padding: 6px; border-bottom: 1px solid var(--line); background: #fbfcfd; border-radius: 12px 12px 0 0; }
@@ -208,11 +206,6 @@ h1, h2, h3, p { margin-top: 0; }
   .ad-placeholder-desktop { display: none; }
   .ad-placeholder-banner { display: none; }
   .ad-placeholder-mobile { display: flex; width: 100%; height: 50px; }
-}
-
-@media (max-width: 355px) {
-  .ad-square-slot { width: min(300px, 100vw); }
-  .ad-placeholder-square { width: 100%; }
 }
 
 @media (max-width: 700px) {
