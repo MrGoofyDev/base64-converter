@@ -453,45 +453,4 @@
     setStatus(encodeStatus, copied ? "Copied!" : "Copy was unavailable. Select the output and copy it manually.");
   });
 
-  function fitAdFrames(slot) {
-    const slotStyle = window.getComputedStyle(slot);
-    const horizontalPadding = Number.parseFloat(slotStyle.paddingLeft) + Number.parseFloat(slotStyle.paddingRight);
-    const availableWidth = Math.max(0, slot.clientWidth - horizontalPadding);
-
-    slot.querySelectorAll("iframe").forEach((frame) => {
-      let wrapper = frame.parentElement;
-      if (!wrapper.classList.contains("ad-frame")) {
-        wrapper = document.createElement("div");
-        wrapper.className = "ad-frame";
-        frame.parentNode.insertBefore(wrapper, frame);
-        wrapper.appendChild(frame);
-      }
-      const scale = Math.min(1, availableWidth / 728);
-      wrapper.style.width = `${728 * scale}px`;
-      wrapper.style.height = `${90 * scale}px`;
-      frame.style.setProperty("width", "728px", "important");
-      frame.style.setProperty("height", "90px", "important");
-      frame.style.setProperty("max-width", "none", "important");
-      frame.style.setProperty("transform", `scale(${scale})`, "important");
-    });
-  }
-
-  const adSlots = [...document.querySelectorAll(".ad-slot")];
-  if (adSlots.length) {
-    adSlots.forEach(fitAdFrames);
-    const adMutationObserver = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        const slot = mutation.target.closest(".ad-slot");
-        if (slot) fitAdFrames(slot);
-      });
-    });
-    adSlots.forEach((slot) => adMutationObserver.observe(slot, { childList: true, subtree: true }));
-
-    if ("ResizeObserver" in window) {
-      const adResizeObserver = new ResizeObserver((entries) => entries.forEach(({ target }) => fitAdFrames(target)));
-      adSlots.forEach((slot) => adResizeObserver.observe(slot));
-    } else {
-      window.addEventListener("resize", () => adSlots.forEach(fitAdFrames));
-    }
-  }
 })();

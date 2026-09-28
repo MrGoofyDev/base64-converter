@@ -31,7 +31,7 @@ The Image-to-Base64 converter appears first; switch tabs at any time to open Bas
 - Image selection, encoding, decoding, preview, and download use browser APIs on the device.
 - The converter does not upload image data to a conversion server.
 - The site uses HTML, CSS, and vanilla JavaScript; it has no required packages, framework, backend, or build process.
-- The homepage has two responsive 728×90 advertising slots using the configured third-party ad script. Banner frames scale proportionally to fit narrow screens. Advertising requests are separate from local image conversion.
+- The homepage has one empty advertising placeholder: 728×90 on desktop and 320×50 on mobile. No advertising scripts or external ad content are loaded.
 
 ## Technology
 
