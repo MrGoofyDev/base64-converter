@@ -62,17 +62,19 @@ h1, h2, h3, p { margin-top: 0; }
 
 .ad-slot {
   display: flex; align-items: center; justify-content: center;
-  width: min(752px, calc(100% - 32px)); height: 112px; margin-inline: auto;
-  padding: 10px 11px; border: 1px solid #e8ebef; background: #f3f5f7; color: #667487;
+  width: fit-content; max-width: 100%; height: auto; margin-inline: auto;
 }
 .ad-placeholder { display: flex; align-items: center; justify-content: center; max-width: 100%; border: 1px dashed #c8d0da; background: #f8f9fb; color: #667487; font-size: 13px; font-weight: 600; letter-spacing: .02em; text-align: center; }
 .ad-placeholder-desktop { width: 728px; height: 90px; }
 .ad-placeholder-mobile { display: none; }
-.ad-inline { margin-top: 32px; }
-.ad-inline + .info-section { padding-top: 48px; }
-.ad-banner-slot { width: 492px; height: 84px; margin-top: 24px; padding: 11px; }
+.ad-inline { margin-top: 20px; }
+.ad-inline + .info-section { padding-top: 24px; }
+.ad-compact-slot { margin-bottom: 12px; }
+.ad-compact-slot .ad-placeholder { width: 320px; height: 50px; }
+.ad-banner-slot { margin-top: 18px; }
 .ad-placeholder-banner { width: 468px; height: 60px; }
-.ad-square-slot { width: 324px; height: 274px; margin-top: 28px; margin-bottom: 32px; padding: 11px; }
+.ad-banner-slot + .how-to { margin-top: 24px; }
+.ad-square-slot { margin-top: 18px; margin-bottom: 20px; }
 .ad-placeholder-square { width: 300px; height: 250px; }
 .tool-section { padding-top: 42px; }
 .tool-card { min-width: 0; max-width: 860px; margin: auto; border: 1px solid #e0e5eb; border-radius: 12px; background: var(--surface); box-shadow: 0 4px 14px rgb(21 36 58 / 3%); }
@@ -202,18 +204,15 @@ h1, h2, h3, p { margin-top: 0; }
 .contact-note { margin: 14px 0 0; color: #667487; font-size: 11px; }
 
 @media (max-width: 783px) {
-  .ad-slot { width: min(320px, 100%); height: 52px; padding: 0; }
+  .ad-slot { position: relative; left: 50%; width: min(320px, 100vw); max-width: none; margin-inline: 0; transform: translateX(-50%); }
   .ad-placeholder-desktop { display: none; }
+  .ad-placeholder-banner { display: none; }
   .ad-placeholder-mobile { display: flex; width: 100%; height: 50px; }
 }
 
-@media (max-width: 523px) {
-  .ad-banner-slot { width: min(320px, 100%); height: 52px; padding: 0; }
-  .ad-placeholder-banner { display: none; }
-}
-
 @media (max-width: 355px) {
-  .ad-square-slot { width: min(302px, 100%); height: 252px; padding: 0; }
+  .ad-square-slot { width: min(300px, 100vw); }
+  .ad-placeholder-square { width: 100%; }
 }
 
 @media (max-width: 700px) {
