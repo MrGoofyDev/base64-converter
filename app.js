@@ -557,14 +557,7 @@
   }
 
   if (adSlots.length) {
-    const adVisibilityObserver = new IntersectionObserver((entries) => {
-      const visibleSlots = entries.filter(({ isIntersecting }) => isIntersecting).map(({ target }) => target);
-      if (visibleSlots.length) loadAds(visibleSlots);
-      visibleSlots.forEach((target) => {
-        adVisibilityObserver.unobserve(target);
-      });
-    }, { rootMargin: "200px 0px" });
-    adSlots.forEach((slot) => adVisibilityObserver.observe(slot));
+    loadAds();
     mobileAds.addEventListener("change", () => {
       loadAds(adSlots.filter((slot) => slot.dataset.adFormat));
     });
