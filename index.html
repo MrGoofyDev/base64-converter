@@ -23,6 +23,7 @@
   <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/styles.css" as="style">
   <link rel="stylesheet" href="/styles.css">
   <script type="application/ld+json">
     {
@@ -80,7 +81,7 @@
 
           <label class="visually-hidden" for="image-file">Choose an image file</label>
           <input class="visually-hidden" id="image-file" type="file" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml,image/bmp,image/x-icon,image/vnd.microsoft.icon,image/avif,.ico">
-          <div class="drop-zone" id="drop-zone" role="button" tabindex="0" aria-label="Choose an image or drag and drop an image here">
+          <div class="drop-zone" id="drop-zone" role="button" tabindex="0">
             <span class="upload-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="25" height="25" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 15.5v3A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
@@ -179,6 +180,8 @@
     </section>
 
     <section class="ad-slot ad-inline ad-wide-slot" aria-label="Advertisement" data-ad-desktop="728x90" data-ad-mobile="320x50">
+      <div class="ad-placeholder ad-placeholder-desktop">Advertisement · 728×90</div>
+      <div class="ad-placeholder ad-placeholder-mobile">Advertisement · 320×50</div>
     </section>
 
     <section class="info-section content-width">
@@ -188,6 +191,7 @@
         <p>Move image data between a file and the formats commonly used in web development.</p>
       </div>
       <aside class="ad-slot ad-compact-slot ad-mobile-slot" aria-label="Advertisement" data-ad-desktop="320x50" data-ad-mobile="320x50">
+        <div class="ad-placeholder">Advertisement · 320×50</div>
       </aside>
       <div class="info-grid">
         <article class="info-card">
@@ -207,6 +211,8 @@
         </article>
       </div>
       <aside class="ad-slot ad-banner-slot ad-medium-slot" aria-label="Advertisement" data-ad-desktop="468x60" data-ad-mobile="320x50">
+        <div class="ad-placeholder ad-placeholder-desktop">Advertisement · 468×60</div>
+        <div class="ad-placeholder ad-placeholder-mobile">Advertisement · 320×50</div>
       </aside>
       <div class="how-to">
         <div>
@@ -220,9 +226,12 @@
         </ol>
       </div>
       <aside class="ad-slot ad-compact-slot ad-mobile-slot" aria-label="Advertisement" data-ad-desktop="320x50" data-ad-mobile="320x50">
+        <div class="ad-placeholder">Advertisement · 320×50</div>
       </aside>
     </section>
     <aside class="ad-slot ad-banner-slot ad-medium-slot" aria-label="Advertisement" data-ad-desktop="468x60" data-ad-mobile="320x50">
+      <div class="ad-placeholder ad-placeholder-desktop">Advertisement · 468×60</div>
+      <div class="ad-placeholder ad-placeholder-mobile">Advertisement · 320×50</div>
     </aside>
 
   </main>

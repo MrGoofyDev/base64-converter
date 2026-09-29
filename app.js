@@ -460,13 +460,60 @@
   };
   const adSlots = [...document.querySelectorAll(".ad-slot[data-ad-desktop][data-ad-mobile]")];
   const mobileAds = window.matchMedia("(max-width: 783px)");
+  const adObservers = new WeakMap();
+  const adTimeouts = new WeakMap();
   let adLoadQueue = Promise.resolve();
+  let adsReady = document.readyState === "complete";
 
-  async function loadAd(slot, formatName) {
+  function showAdFallback(slot, format, unavailable = false) {
+    slot.classList.remove("ad-loaded");
+    slot.dataset.adState = unavailable ? "unavailable" : "loading";
+    slot.querySelectorAll(".ad-placeholder").forEach((placeholder) => {
+      const isMobile = mobileAds.matches;
+      const dimensions = isMobile ? adFormats[slot.dataset.adMobile] : format;
+      placeholder.textContent = `Advertisement${unavailable ? " unavailable" : ""} · ${dimensions.width}×${dimensions.height}`;
+    });
+  }
+
+  function markAdLoaded(slot) {
+    if (!slot.querySelector("iframe[data-ad-frame-loaded]")) return false;
+    slot.classList.add("ad-loaded");
+    slot.dataset.adState = "loaded";
+    adObservers.get(slot)?.disconnect();
+    window.clearTimeout(adTimeouts.get(slot));
+    return true;
+  }
+
+  function watchAdFrames(slot) {
+    slot.querySelectorAll("iframe:not([data-ad-frame-watched])").forEach((frame) => {
+      frame.dataset.adFrameWatched = "true";
+      if (!frame.title) frame.title = "Advertisement";
+      frame.addEventListener("load", () => {
+        frame.dataset.adFrameLoaded = "true";
+        markAdLoaded(slot);
+      }, { once: true });
+    });
+  }
+
+  function loadAd(slot, formatName) {
     const format = adFormats[formatName];
-    if (!format) throw new Error(`Unknown advertisement format: ${formatName}`);
+    if (!format) {
+      slot.dataset.adState = "unavailable";
+      return Promise.resolve();
+    }
+    if (slot.dataset.adFormat === formatName) return Promise.resolve();
 
-    slot.replaceChildren();
+    adObservers.get(slot)?.disconnect();
+    window.clearTimeout(adTimeouts.get(slot));
+    slot.replaceChildren(...slot.querySelectorAll(".ad-placeholder"));
+    slot.classList.remove("ad-loaded");
+    slot.dataset.adFormat = formatName;
+    showAdFallback(slot, format);
+
+    const observer = new MutationObserver(() => watchAdFrames(slot));
+    adObservers.set(slot, observer);
+    observer.observe(slot, { childList: true, subtree: true });
+
     const optionsScript = document.createElement("script");
     optionsScript.textContent = `atOptions = {
       'key' : '${format.key}',
@@ -477,32 +524,56 @@
     };`;
     slot.appendChild(optionsScript);
 
-    await new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const invokeScript = document.createElement("script");
+      invokeScript.async = false;
       invokeScript.src = `https://www.highrevenueformat.com/${format.key}/invoke.js`;
-      invokeScript.onload = resolve;
-      invokeScript.onerror = () => reject(new Error(`Failed to load advertisement script for ${formatName}`));
+      invokeScript.onload = () => {
+        watchAdFrames(slot);
+        if (slot.dataset.adState !== "loaded") {
+          adTimeouts.set(slot, window.setTimeout(() => {
+            if (!markAdLoaded(slot)) showAdFallback(slot, format, true);
+            adObservers.get(slot)?.disconnect();
+          }, 8000));
+        }
+        resolve();
+      };
+      invokeScript.onerror = () => {
+        showAdFallback(slot, format, true);
+        adObservers.get(slot)?.disconnect();
+        invokeScript.remove();
+        resolve();
+      };
       slot.appendChild(invokeScript);
     });
   }
 
-  function loadAds() {
+  function loadAds(slots = adSlots) {
+    if (!adsReady) return;
     adLoadQueue = adLoadQueue.then(async () => {
-      const isMobile = mobileAds.matches;
-      for (const slot of adSlots) {
-        const formatName = isMobile ? slot.dataset.adMobile : slot.dataset.adDesktop;
-        try {
-          await loadAd(slot, formatName);
-        } catch (error) {
-          console.error(`Advertisement slot failed to load (${formatName}).`, error);
-        }
+      for (const slot of slots) {
+        const formatName = mobileAds.matches ? slot.dataset.adMobile : slot.dataset.adDesktop;
+        await loadAd(slot, formatName);
       }
     });
   }
 
   if (adSlots.length) {
-    loadAds();
-    mobileAds.addEventListener("change", loadAds);
+    const adVisibilityObserver = new IntersectionObserver((entries) => {
+      const visibleSlots = entries.filter(({ isIntersecting }) => isIntersecting).map(({ target }) => target);
+      if (visibleSlots.length) loadAds(visibleSlots);
+      visibleSlots.forEach((target) => {
+        adVisibilityObserver.unobserve(target);
+      });
+    }, { rootMargin: "200px 0px" });
+    adSlots.forEach((slot) => adVisibilityObserver.observe(slot));
+    if (!adsReady) window.addEventListener("load", () => {
+      adsReady = true;
+      adSlots.forEach((slot) => adVisibilityObserver.observe(slot));
+    }, { once: true });
+    mobileAds.addEventListener("change", () => {
+      loadAds(adSlots.filter((slot) => slot.dataset.adFormat));
+    });
   }
 
 })();
