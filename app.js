@@ -463,7 +463,6 @@
   const adObservers = new WeakMap();
   const adTimeouts = new WeakMap();
   let adLoadQueue = Promise.resolve();
-  let adsReady = document.readyState === "complete";
 
   function showAdFallback(slot, format, unavailable = false) {
     slot.classList.remove("ad-loaded");
@@ -526,7 +525,7 @@
 
     return new Promise((resolve) => {
       const invokeScript = document.createElement("script");
-      invokeScript.async = false;
+      invokeScript.async = true;
       invokeScript.src = `https://www.highrevenueformat.com/${format.key}/invoke.js`;
       invokeScript.onload = () => {
         watchAdFrames(slot);
@@ -549,7 +548,6 @@
   }
 
   function loadAds(slots = adSlots) {
-    if (!adsReady) return;
     adLoadQueue = adLoadQueue.then(async () => {
       for (const slot of slots) {
         const formatName = mobileAds.matches ? slot.dataset.adMobile : slot.dataset.adDesktop;
@@ -567,10 +565,6 @@
       });
     }, { rootMargin: "200px 0px" });
     adSlots.forEach((slot) => adVisibilityObserver.observe(slot));
-    if (!adsReady) window.addEventListener("load", () => {
-      adsReady = true;
-      adSlots.forEach((slot) => adVisibilityObserver.observe(slot));
-    }, { once: true });
     mobileAds.addEventListener("change", () => {
       loadAds(adSlots.filter((slot) => slot.dataset.adFormat));
     });
